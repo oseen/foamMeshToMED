@@ -179,7 +179,7 @@ private:
             const cellShapeList& cellShapes,
             const label *mapping,
             const char *meshname,
-            const int medfileid
+            const med_idt medfileid
         ) const;
 
         void writePolysNFaces
@@ -187,7 +187,7 @@ private:
             const labelList& polys,
             const cellList& cellFaces,
             const char* meshname,
-            const int medfileid
+            const med_idt medfileid
         ) const;
 
         void writePolysNPointsPerFace
@@ -196,7 +196,7 @@ private:
             const cellList& cellFaces,
             const faceList& faces,
             const char* meshname,
-            const int medfileid
+            const med_idt medfileid
         ) const;
 
         void writePolysPoints
@@ -206,14 +206,14 @@ private:
             const faceList& faces,
             const labelList& faceOwner,
             const char* meshname,
-            const int medfileid
+            const med_idt medfileid
         ) const;
 
         void writeAllPolyhedrons
         (
             const labelList& pointToGlobal,
             const char* meshname,
-            const int medfileid
+            const med_idt medfileid
         ) const;
 
         void writeAllPrims
@@ -223,7 +223,7 @@ private:
             const cellShapeList& cellShapes,
             const label *mapping,
             const char *meshname,
-            const int medfileid
+            const med_idt medfileid
         ) const;
 
         void writeFacePrims
@@ -231,7 +231,7 @@ private:
             const med_geometry_type key,
             const faceList& patchFaces,
             const char* meshname,
-            const int medfileid
+            const med_idt medfileid
         ) const;
 
         void writeAllFacePrims
@@ -241,7 +241,7 @@ private:
             const label nPrims,
             const faceList& patchFaces,
             const char* meshname,
-            const int medfileid
+            const med_idt medfileid
         ) const;
 
         void writeAllPolygons
@@ -250,14 +250,14 @@ private:
             const label nPrims,
             const faceList& patchFaces,
             const char* meshname,
-            const int medfileid
+            const med_idt medfileid
         ) const;
 
         void writePolygons
         (
             const faceList& patchFaces,
             const char* meshname,
-            const int medfileid
+            const med_idt medfileid
         ) const;
 
         void writeAllPoints
@@ -266,7 +266,7 @@ private:
             const label nPoints,
             const double scale,
             const char *meshname,
-            const int medfileid
+            const med_idt medfileid
         ) const;
 
         void writeFamilies
@@ -275,7 +275,7 @@ private:
          const int nelems,
          const med_int *families,
          const char* meshname,
-         const int medfileid
+         const med_idt medfileid
          )const;
 
 public:
@@ -399,7 +399,7 @@ public:
             const bool meshMoving,
             const double scale,
             const char * meshname,
-            const int medfileid
+            const med_idt medfileid
         ) const;
 
 };

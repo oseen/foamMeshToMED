@@ -394,7 +394,7 @@ void Foam::MEDMesh::writePrims
     const cellShapeList& cellShapes,
     const label *mapping,
     const char *meshname,
-    const int medfileid
+    const med_idt medfileid
 ) const
 {
     // Create a temp int array
@@ -430,7 +430,7 @@ void Foam::MEDMesh::writeAllPolyhedrons
 (
     const labelList& pointToGlobal,
     const char* meshname,
-    const int medfileid
+    const med_idt medfileid
 ) const
 {
     if (meshCellSets_.nPolys)
@@ -536,7 +536,7 @@ void Foam::MEDMesh::writeAllPrims
     const cellShapeList& cellShapes,
     const label *mapping,
     const char* meshname,
-    const int medfileid
+    const med_idt medfileid
 ) const
 {
     if (nPrisms)
@@ -553,7 +553,7 @@ void Foam::MEDMesh::writeFamilies
  const int nelems,
  const med_int *families,
  const char* meshname,
- const int medfileid
+ const med_idt medfileid
  )const
 {
     if (nelems > 0)
@@ -573,7 +573,7 @@ void Foam::MEDMesh::writeFacePrims
     const med_geometry_type key,
     const faceList& patchFaces,
     const char* meshname,
-    const int medfileid
+    const med_idt medfileid
 ) const
 {
     if (patchFaces.size())
@@ -614,7 +614,7 @@ void Foam::MEDMesh::writeAllFacePrims
     const label nPrims,
     const faceList& patchFaces,
     const char* meshname,
-    const int medfileid
+    const med_idt medfileid
 ) const
 {
     if (nPrims)
@@ -635,7 +635,7 @@ void Foam::MEDMesh::writeAllPolygons
     const label nPrims,
     const faceList& patchFaces,
     const char* meshname,
-    const int medfileid
+    const med_idt medfileid
 ) const
 {
     if (nPrims)
@@ -651,7 +651,7 @@ void Foam::MEDMesh::writePolygons
 (
     const faceList& patchFaces,
     const char* meshname,
-    const int medfileid
+    const med_idt medfileid
 ) const
 {
     if (patchFaces.size())
@@ -695,7 +695,7 @@ void Foam::MEDMesh::writeAllPoints
     const label nPoints,
     const double scale,
     const char *meshname,
-    const int medfileid
+    const med_idt medfileid
 ) const
 {
     barrier();
@@ -725,7 +725,7 @@ void Foam::MEDMesh::write
     const bool meshMoving,
     const double scale,
     const char * meshname,
-    const int medfileid
+    const med_idt medfileid
 ) const
 {
     const Time& runTime = mesh_.time();

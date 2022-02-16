@@ -2,9 +2,17 @@ EXE_INC = \
      /*-DFULLDEBUG -g -O0  -DNDEBUG \*/\
     -std=c++11 \
     -I$(LIB_SRC)/finiteVolume/lnInclude \
-    -I$(LIB_SRC)/meshTools/lnInclude 
+    -I$(LIB_SRC)/meshTools/lnInclude \
+    -I$(LIB_SRC)/dynamicMesh/lnInclude \
+    -I$(HDF5_ROOT)/include \
+    -I$(OPENMPI_ROOT)/include \    
+    -I$(MED_ROOT)/include/ \
+    -I$(MEDCOUPLING_ROOT)/include/ \
+    -L$(MEDCOUPLING_ROOT)/lib/ \
+    -L$(MED_ROOT)/lib/ 
 
 EXE_LIBS = \
     -lfiniteVolume \
     -lmeshTools \
+    -ldynamicMesh \
     -lmedC
