@@ -1,17 +1,22 @@
+-include $(GENERAL_RULES)/mplibType
+
+HDF5_ROOT=/usr/include/hdf5/openmpi
+
 EXE_INC = \
-     /*-DFULLDEBUG -g -O0  -DNDEBUG \*/\
+    $(PFLAGS) $(PINC) \
     -std=c++11 \
     -I$(LIB_SRC)/finiteVolume/lnInclude \
     -I$(LIB_SRC)/meshTools/lnInclude \
     -I$(LIB_SRC)/dynamicMesh/lnInclude \
-    -I$(HDF5_ROOT)/include \
-    -I$(OPENMPI_ROOT)/include \    
+    -I$(HDF5_ROOT) \
+    -I$(OPENMPI_ROOT)/include \
     -I$(MED_ROOT)/include/ \
     -I$(MEDCOUPLING_ROOT)/include/ \
     -L$(MEDCOUPLING_ROOT)/lib/ \
     -L$(MED_ROOT)/lib/ 
 
 EXE_LIBS = \
+    $(PLIBS) \
     -lfiniteVolume \
     -lmeshTools \
     -ldynamicMesh \
