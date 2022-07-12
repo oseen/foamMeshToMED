@@ -1,4 +1,4 @@
--include $(GENERAL_RULES)/mplibType
+-include $(GENERAL_RULES)/mpi-rules
 
 HDF5_ROOT=/usr/include/hdf5/openmpi
 

@@ -108,10 +108,11 @@ int main(int argc, char *argv[])
     #include "setRootCase.H"
 
     // Check options
-    const bool is_scale = args.optionFound("scale");
+    const bool is_scale = args.found("scale");
     double scale;
     if (is_scale)
-        scale = atof(args.option("scale").c_str());
+        //scale = atof(args.options("scale").c_str());
+        scale = atof(args.options()["scale"].c_str());
     else
        scale = 1.0; 
 
@@ -183,21 +184,21 @@ int main(int argc, char *argv[])
         Info << "failed to create the mesh" << endl;
     //
     // Construct the MED mesh
-    const bool selectedPatches = args.optionFound("patches");
+    const bool selectedPatches = args.found("patches");
     wordReList patchPatterns;
     if (selectedPatches)
     {
-        patchPatterns = wordReList(args.optionLookup("patches")());
+        patchPatterns = wordReList(args.lookup("patches")());
     }
-    const bool selectedZones = args.optionFound("faceZones");
+    const bool selectedZones = args.found("faceZones");
     wordReList zonePatterns;
     if (selectedZones)
     {
-        zonePatterns = wordReList(args.optionLookup("faceZones")());
+        zonePatterns = wordReList(args.lookup("faceZones")());
     }
 
     word cellZoneName;
-    const bool doCellZone = args.optionReadIfPresent("cellZone", cellZoneName);
+    const bool doCellZone = args.readIfPresent("cellZone", cellZoneName);
 
     fvMeshSubset meshSubsetter(mesh);
     if (doCellZone)
@@ -218,7 +219,7 @@ int main(int argc, char *argv[])
           ? meshSubsetter.subMesh()
           : meshSubsetter.baseMesh()
         ),
-        args.optionFound("noPatches"),
+        args.found("noPatches"),
         selectedPatches,
         patchPatterns,
         selectedZones,

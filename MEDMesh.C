@@ -58,10 +58,10 @@ void Foam::MEDMesh::correct()
     boundaryFaceSets_.setSize(mesh_.boundary().size());
     allPatchNames_.clear();
     patchNames_.clear();
-    nPatchPrims_ = 0;
+    nPatchPrims_.clear();
     faceZoneFaceSets_.setSize(mesh_.faceZones().size());
     faceZoneNames_.clear();
-    nFaceZonePrims_ = 0;
+    nFaceZonePrims_.clear();
     boundaryFaceToBeIncluded_.clear();
 
     if (!noPatches_)
@@ -94,10 +94,14 @@ void Foam::MEDMesh::correct()
                 forAll(allPatchNames_, nameI)
                 {
                     const word& patchName = allPatchNames_[nameI];
-                    if (findStrings(patchPatterns_, patchName))
-                    {
-                        patchNames_.insert(patchName);
-                    }
+		    forAll(patchPatterns_, patternI)
+		    {
+			if (patchPatterns_[patternI] == patchName)
+			{
+			    patchNames_.insert(patchName);
+			    break;
+			}
+		    }
                 }
             }
         }
@@ -112,11 +116,11 @@ void Foam::MEDMesh::correct()
     {
         const cellShapeList& cellShapes = mesh_.cellShapes();
 
-        const cellModel& tet = *(cellModeller::lookup("tet"));
-        const cellModel& pyr = *(cellModeller::lookup("pyr"));
-        const cellModel& prism = *(cellModeller::lookup("prism"));
-        const cellModel& wedge = *(cellModeller::lookup("wedge"));
-        const cellModel& hex = *(cellModeller::lookup("hex"));
+        const cellModel& tet = *(cellModel::ptr("tet"));
+        const cellModel& pyr = *(cellModel::ptr("pyr"));
+        const cellModel& prism = *(cellModel::ptr("prism"));
+        const cellModel& wedge = *(cellModel::ptr("wedge"));
+        const cellModel& hex = *(cellModel::ptr("hex"));
 
 
 
@@ -364,7 +368,7 @@ Foam::cellShapeList Foam::MEDMesh::map
 
     label offset = hexes.size();
 
-    const cellModel& hex = *(cellModeller::lookup("hex"));
+    const cellModel& hex = *(cellModel::ptr("hex"));
     labelList hexLabels(8);
 
     forAll(wedges, i)
