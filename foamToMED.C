@@ -209,7 +209,7 @@ int main(int argc, char *argv[])
             << ")" << endl;
         const cellZone& cz = mesh.cellZones()[cellZoneName];
         cellSet c0(mesh, "c0", labelHashSet(cz));
-        meshSubsetter.setLargeCellSubset(c0, 0);
+        meshSubsetter.setCellSubset(c0, 0);
     }
 
     MEDMesh eMesh
@@ -262,7 +262,7 @@ int main(int argc, char *argv[])
                 << ")" << endl;
             const cellZone& cz = mesh.cellZones()[cellZoneName];
             cellSet c0(mesh, "c0", labelHashSet(cz));
-            meshSubsetter.setLargeCellSubset(c0, 0);
+            meshSubsetter.setCellSubset(c0, 0);
         }
 
 
